@@ -19,7 +19,6 @@ import MvTable from '@/components/MvTable.vue'
 import MvDialog from './components/MvDialog.vue'
 
 const screenWidth = computed(() => screen.width)
-const screenHeight = computed(() => screen.height)
 
 onMounted(() => {
   getAllMovies()
