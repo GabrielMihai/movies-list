@@ -1,0 +1,64 @@
+@use 'sass:math';
+
+.movie-table-container {
+  width: 70%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $border-radius;
+  border: 1px solid $color-secondary;
+  background-color: $color-tertiary;
+
+  .movie-table-data {
+    flex: 1;
+    border-bottom: 1px solid $color-primary;
+
+    table {
+      width: 100%;
+      border-spacing: 0;
+
+      thead {
+        th {
+          background-color: $color-primary;
+          border-bottom: 1px solid $color-secondary;
+          height: 40px;
+          width: 20%;
+          text-align: center;
+        }
+      }
+
+      tbody {
+        td {
+          padding: 10px 0;
+          height: math.div(100%, 21) * 20;
+          text-align: center;
+          border-bottom: 1px solid $color-primary;
+
+          .movie-table-actions {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+
+            .table-action-icon {
+              font-size: x-large;
+              color: black;
+              cursor: pointer;
+
+              &:hover {
+                color: $color-secondary;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .movie-table-footer-actions {
+    flex: 0;
+    display: flex;
+    justify-content: end;
+    padding: 0.5rem 1rem;
+  }
+}

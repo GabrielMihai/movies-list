@@ -1,0 +1,29 @@
+.button {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  &:hover {
+    background-color: $color-primary;
+  }
+
+  .button-with-text-icon {
+    margin-right: 0.2rem;
+    font-size: 1.5rem;
+  }
+}
+
+.button-with-text {
+  padding: 0.3rem 0.7rem;
+  border-radius: $border-radius;
+  font-size: large;
+  letter-spacing: 0.1rem;
+}
+
+.button-icon {
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: x-large;
+}
