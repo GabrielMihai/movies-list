@@ -1,7 +1,10 @@
 <template>
   <div class="movie-container">
     <div class="movie-container-header">
-      <h1>Movie list</h1>
+      <div style="display: flex; align-items: center; gap: 0.3rem">
+        <h1>Movie list</h1>
+        <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
+      </div>
       <h3 v-if="screenWidth > 1024">Switch</h3>
     </div>
     <div class="movie-container-body">
