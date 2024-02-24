@@ -45,11 +45,10 @@
 </template>
 
 <script setup lang="ts">
+import MovieService from '@/service/MovieService'
 import type { Movie } from '@/types/Movie'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
-import MovieService from '@/service/MovieService'
-import { computed } from 'vue'
 
 const props = defineProps<{
   movies: Movie[]
