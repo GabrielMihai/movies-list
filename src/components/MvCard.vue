@@ -15,10 +15,11 @@
         <span class="movie-card-detail-key">{{ computedMovie.key }}</span>
         <span class="movie-card-detail-value">{{ computedMovie.value }}</span>
       </div>
-      <div class="movie-card-actions">
-        <mv-button icon="pencil" @click="editHandler" />
-        <mv-button icon="delete" @click="deleteHandler" />
-      </div>
+    </div>
+
+    <div class="movie-card-actions">
+      <mv-button icon="pencil" @click="editHandler" />
+      <mv-button icon="delete" @click="deleteHandler" />
     </div>
   </div>
 </template>

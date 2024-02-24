@@ -12,7 +12,13 @@
         <tbody>
           <tr v-for="movie in props.movies" :key="movie.id">
             <td>{{ movie.title }}</td>
-            <td>{{ movie.summary }}</td>
+            <td>
+              {{
+                movie.summary && movie.summary.length > 50
+                  ? movie.summary.slice(0, 50) + '...'
+                  : movie.summary
+              }}
+            </td>
             <td>{{ movie.director }}</td>
             <td>{{ movie.releaseYear }}</td>
             <td>
@@ -43,6 +49,7 @@ import type { Movie } from '@/types/Movie'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
 import MovieService from '@/service/MovieService'
+import { computed } from 'vue'
 
 const props = defineProps<{
   movies: Movie[]

@@ -5,7 +5,16 @@
         <h1>Movie list</h1>
         <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
       </div>
-      <input type="checkbox" v-if="screenWidth >= 1024" v-model="checked" />
+      <label class="switch">
+        <input type="checkbox" class="checkbox" v-if="screenWidth >= 1024" v-model="checked" />
+        <span class="toggle-thumb">
+          <i class="mdi mdi-table" style="margin-left: 0.5rem; font-size: 1.3rem; color: white"></i>
+          <i
+            class="mdi mdi-cards-variant"
+            style="margin-right: 0.5rem; font-size: 1.3rem; color: white"
+          ></i>
+        </span>
+      </label>
 
       <mv-button icon="plus" v-if="screenWidth < 1024 && !checked" @click="openDialog" />
     </div>

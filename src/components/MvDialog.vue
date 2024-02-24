@@ -3,35 +3,17 @@
     <div class="dialog-container">
       <div class="dialog-header"><mv-button icon="close" @click="closeDialog" /></div>
       <div class="dialog-body">
-        <input
-          v-model="movieState.title"
-          type="text"
-          name=""
-          id=""
-          class="text-input"
-          placeholder="Title"
-        />
-        <input
+        <input v-model="movieState.title" type="text" class="text-input" placeholder="Title" />
+        <textarea
           v-model="movieState.summary"
           type="text"
-          name=""
-          id=""
-          class="text-input"
+          class="text-input textarea"
           placeholder="Summary"
         />
-        <input
-          v-model="movieState.director"
-          type="text"
-          name=""
-          id=""
-          class="text-input"
-          placeholder="Director"
-        />
+        <input v-model="movieState.director" class="text-input" placeholder="Director" />
         <input
           v-model.number="movieState.releaseYear"
-          type="text"
-          name=""
-          id=""
+          type="number"
           class="text-input"
           placeholder="Release year"
         />
