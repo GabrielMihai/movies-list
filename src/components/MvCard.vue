@@ -1,10 +1,11 @@
 <template>
-  <div class="movie-card" @click="tapped = !tapped">
-    <div class="movie-card-img">
+  <div class="movie-card">
+    <div class="movie-card-img" @click="tapped = !tapped">
       <img :src="movie.poster" :alt="movie.fileName" />
     </div>
     <div
       :class="screenWidth < 768 ? (tapped ? 'movie-card-details' : 'd-none') : 'movie-card-details'"
+      @click="tapped = !tapped"
     >
       <div
         v-for="(computedMovie, computedMovieIndex) in computedMovies"
@@ -15,8 +16,8 @@
         <span class="movie-card-detail-value">{{ computedMovie.value }}</span>
       </div>
       <div class="movie-card-actions">
-        <mv-button icon="pencil" @click.prevent.stop="editHandler" />
-        <mv-button icon="delete" @click.stop.prevent="deleteHandler" />
+        <mv-button icon="pencil" @click="editHandler" />
+        <mv-button icon="delete" @click="deleteHandler" />
       </div>
     </div>
   </div>
