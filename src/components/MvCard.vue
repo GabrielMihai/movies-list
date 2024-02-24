@@ -15,8 +15,8 @@
         <span class="movie-card-detail-value">{{ computedMovie.value }}</span>
       </div>
       <div class="movie-card-actions">
-        <mv-button icon="pencil" @click="editHandler" />
-        <mv-button icon="delete" @click="deleteHandler" />
+        <mv-button icon="pencil" @click.stop="editHandler" />
+        <mv-button icon="delete" @click.stop="deleteHandler" />
       </div>
     </div>
   </div>
