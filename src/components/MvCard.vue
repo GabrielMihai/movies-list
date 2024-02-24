@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card" @touchstart="tapped = !tapped">
+  <div class="movie-card" @click="tapped = !tapped">
     <div class="movie-card-img">
       <img :src="movie.poster" :alt="movie.fileName" />
     </div>
@@ -15,8 +15,8 @@
         <span class="movie-card-detail-value">{{ computedMovie.value }}</span>
       </div>
       <div class="movie-card-actions">
-        <mv-button icon="pencil" @click.stop="editHandler" />
-        <mv-button icon="delete" @click.stop="deleteHandler" />
+        <mv-button icon="pencil" @click.prevent.stop="editHandler" />
+        <mv-button icon="delete" @click.stop.prevent="deleteHandler" />
       </div>
     </div>
   </div>
