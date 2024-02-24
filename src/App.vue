@@ -8,7 +8,12 @@
       <h3 v-if="screenWidth > 1024">Switch</h3>
     </div>
     <div class="movie-container-body">
-      <mv-table :movies="movies" @dialog:show="openDialog" @movie:edit="editMovieHandler" />
+      <mv-table
+        :movies="movies"
+        @dialog:show="openDialog"
+        @movie:edit="editMovieHandler"
+        @refresh="getAllMovies"
+      />
     </div>
     <mv-dialog v-model="showDialog" @dialog:close="closeDialogHandler" :movie="selectedMovie" />
   </div>

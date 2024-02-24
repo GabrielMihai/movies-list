@@ -18,7 +18,11 @@
             <td>
               <div class="movie-table-actions">
                 <mv-icon icon="pencil" class="table-action-icon" @click="editMovieHandler(movie)" />
-                <mv-icon icon="delete" class="table-action-icon" />
+                <mv-icon
+                  icon="delete"
+                  class="table-action-icon"
+                  @click="deleteMovieHandler(movie)"
+                />
               </div>
             </td>
           </tr>
@@ -35,12 +39,13 @@
 import type { Movie } from '@/types/Movie'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
+import MovieService from '@/service/MovieService'
 
 const props = defineProps<{
   movies: Movie[]
 }>()
 
-const emits = defineEmits(['dialog:show', 'movie:edit'])
+const emits = defineEmits(['dialog:show', 'movie:edit', 'refresh'])
 
 const headers = ['Title', 'Summary', 'Director', 'Release year', 'Actions']
 
@@ -50,6 +55,11 @@ const emitShowDialog = (movie?: Movie) => {
 
 const editMovieHandler = (movie: Movie) => {
   emits('movie:edit', movie)
+}
+
+const deleteMovieHandler = (movie: Movie) => {
+  MovieService.delete(movie.id!)
+  emits('refresh')
 }
 </script>
 
