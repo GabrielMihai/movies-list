@@ -60,11 +60,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import MovieService from '@/service/MovieService'
 import type { Movie } from '@/types/Movie'
+import { ref, watch } from 'vue'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
-import MovieService from '@/service/MovieService'
 
 const show = defineModel({ default: false })
 watch(
@@ -87,6 +87,8 @@ watch(
 const props = defineProps<{
   movie?: Movie | null
 }>()
+
+const showSpan = ref(false)
 
 const emits = defineEmits(['dialog:close'])
 
@@ -121,6 +123,8 @@ const createHandler = () => {
 }
 
 const closeDialog = () => {
+  show.value = false
+  showSpan.value = false
   emits('dialog:close')
 }
 </script>

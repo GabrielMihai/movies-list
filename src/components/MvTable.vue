@@ -28,6 +28,9 @@
           </tr>
         </tbody>
       </table>
+      <div class="movie-table-no-data" v-if="!movies || movies.length === 0">
+        No movies found...
+      </div>
     </div>
     <div class="movie-table-footer-actions">
       <mv-button icon="plus" @click="emitShowDialog">ADD</mv-button>

@@ -5,15 +5,19 @@
         <h1>Movie list</h1>
         <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
       </div>
-      <h3 v-if="screenWidth > 1024">Switch</h3>
+      <input type="checkbox" v-if="screenWidth > 1024" v-model="checked" />
     </div>
     <div class="movie-container-body">
       <mv-table
+        v-if="checked"
         :movies="movies"
         @dialog:show="openDialog"
         @movie:edit="editMovieHandler"
         @refresh="getAllMovies"
       />
+      <div v-else class="movie-card-container">
+        <mv-card v-for="movie in movies" :key="movie.id" :movie="movie" />
+      </div>
     </div>
     <mv-dialog v-model="showDialog" @dialog:close="closeDialogHandler" :movie="selectedMovie" />
   </div>
@@ -25,12 +29,14 @@ import type { Movie } from '@/types/Movie'
 import MovieService from '@/service/MovieService'
 import MvTable from '@/components/MvTable.vue'
 import MvDialog from './components/MvDialog.vue'
-
-const screenWidth = computed(() => screen.width)
+import MvCard from './components/MvCard.vue'
 
 onMounted(() => {
   getAllMovies()
 })
+
+const screenWidth = computed(() => screen.width)
+const checked = ref(false)
 
 const movies = ref<Movie[]>([])
 const getAllMovies = () => {
