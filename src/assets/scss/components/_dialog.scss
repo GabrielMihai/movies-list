@@ -6,6 +6,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeInAnimation ease 0.2s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 
   .dialog-container {
     width: 50%;

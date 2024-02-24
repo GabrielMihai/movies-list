@@ -107,6 +107,15 @@ const createHandler = () => {
 const closeDialog = () => {
   show.value = false
   showSpan.value = false
+
+  movieState.value = {
+    id: undefined,
+    title: undefined,
+    summary: undefined,
+    director: undefined,
+    releaseYear: undefined,
+    poster: undefined
+  }
   emits('dialog:close')
 }
 </script>

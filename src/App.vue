@@ -75,6 +75,7 @@ const openDialog = () => {
 
 const closeDialogHandler = () => {
   showDialog.value = false
+  selectedMovie.value = null
   getAllMovies()
 }
 
