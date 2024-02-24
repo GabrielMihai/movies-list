@@ -100,7 +100,10 @@
       right: 2rem;
       bottom: 0.5rem;
       color: white;
-      z-index: 999;
+
+      @media screen and (max-width: 767px) {
+        right: 0.5rem;
+      }
     }
   }
 }
