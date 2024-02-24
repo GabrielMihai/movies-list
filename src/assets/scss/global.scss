@@ -43,6 +43,10 @@ body {
     padding: 0 2rem;
     margin: 0 1rem;
     border-bottom: 1px solid whitesmoke;
+
+    @media screen and (max-width: 767px) {
+      padding: 0;
+    }
   }
 
   .movie-container-body {
@@ -52,5 +56,6 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    position: relative;
   }
 }

@@ -9,6 +9,10 @@
   gap: 1.5rem;
   padding: 2rem;
 
+  @media screen and (max-width: 767px) {
+    padding: 1rem 1rem;
+  }
+
   .movie-card {
     width: 80%;
     flex: 0 0 40%;
@@ -17,7 +21,6 @@
     display: flex;
     background-color: $color-tertiary;
     box-shadow: $box-shadow;
-    flex-direction: column;
 
     @media screen and (max-width: 767px) {
       display: block;
@@ -50,6 +53,7 @@
       flex-direction: column;
       padding: 1rem;
       gap: 2rem;
+      position: relative;
 
       @media screen and (max-width: 767px) {
         position: absolute;
@@ -86,6 +90,21 @@
           }
         }
       }
+
+      .movie-card-actions {
+        display: flex;
+        font-size: xx-large;
+        position: absolute;
+        right: 0.5rem;
+        bottom: 0.5rem;
+        color: white;
+      }
     }
   }
+}
+
+.movie-add-button-card-case {
+  position: absolute;
+  right: 3rem;
+  bottom: 3rem;
 }

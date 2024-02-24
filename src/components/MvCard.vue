@@ -3,22 +3,30 @@
     <div class="movie-card-img">
       <img :src="movie.poster" :alt="movie.fileName" />
     </div>
-    <div class="movie-card-details">
+    <div
+      :class="screenWidth < 768 ? (tapped ? 'movie-card-details' : 'd-none') : 'movie-card-details'"
+    >
       <div
         v-for="(computedMovie, computedMovieIndex) in computedMovies"
         :key="computedMovieIndex"
-        :class="screenWidth < 768 ? (tapped ? 'movie-card-detail' : 'd-none') : 'movie-card-detail'"
+        class="movie-card-detail"
       >
         <span class="movie-card-detail-key">{{ computedMovie.key }}</span>
         <span class="movie-card-detail-value">{{ computedMovie.value }}</span>
+      </div>
+      <div class="movie-card-actions">
+        <mv-button icon="pencil" @click="editHandler" />
+        <mv-button icon="delete" @click="deleteHandler" />
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { Movie } from '@/types/Movie'
 import { computed, ref } from 'vue'
+import type { Movie } from '@/types/Movie'
+import MvButton from './MvButton.vue'
+import MovieService from '@/service/MovieService'
 
 interface MovieDetails {
   key: string
@@ -28,6 +36,8 @@ interface MovieDetails {
 const props = defineProps<{
   movie: Movie
 }>()
+
+const emits = defineEmits(['refresh', 'movie:edit'])
 
 const screenWidth = computed(() => screen.width)
 const tapped = ref(false)
@@ -45,6 +55,17 @@ const computedMovies = computed(() => {
   }
   return movieDetails
 })
+
+const deleteHandler = () => {
+  if (props.movie) {
+    MovieService.delete(props.movie.id!)
+    emits('refresh')
+  }
+}
+
+const editHandler = () => {
+  emits('movie:edit', props.movie)
+}
 </script>
 
 <style scoped></style>

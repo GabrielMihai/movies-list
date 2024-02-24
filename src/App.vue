@@ -5,7 +5,9 @@
         <h1>Movie list</h1>
         <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
       </div>
-      <input type="checkbox" v-if="screenWidth > 1024" v-model="checked" />
+      <input type="checkbox" v-if="screenWidth >= 1024" v-model="checked" />
+
+      <mv-button icon="plus" v-if="screenWidth < 1024 && !checked" @click="openDialog" />
     </div>
     <div class="movie-container-body">
       <mv-table
@@ -16,8 +18,20 @@
         @refresh="getAllMovies"
       />
       <div v-else class="movie-card-container">
-        <mv-card v-for="movie in movies" :key="movie.id" :movie="movie" />
+        <mv-card
+          v-for="movie in movies"
+          :key="movie.id"
+          :movie="movie"
+          @refresh="getAllMovies"
+          @movie:edit="editMovieHandler"
+        />
       </div>
+      <mv-button
+        icon="plus"
+        v-if="screenWidth >= 1024 && !checked"
+        class="movie-add-button-card-case"
+        @click="openDialog"
+      />
     </div>
     <mv-dialog v-model="showDialog" @dialog:close="closeDialogHandler" :movie="selectedMovie" />
   </div>
@@ -30,6 +44,7 @@ import MovieService from '@/service/MovieService'
 import MvTable from '@/components/MvTable.vue'
 import MvDialog from './components/MvDialog.vue'
 import MvCard from './components/MvCard.vue'
+import MvButton from './components/MvButton.vue'
 
 onMounted(() => {
   getAllMovies()
