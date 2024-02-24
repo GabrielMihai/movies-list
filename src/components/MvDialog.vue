@@ -36,10 +36,16 @@
           placeholder="Release year"
         />
         <label for="file-input" class="file-input-label">
-          Select a file...
+          {{ movieState.fileName ?? 'Select a file...' }}
           <mv-icon icon="file-outline" class="file-icon" />
         </label>
-        <input type="file" name="file-input" id="file-input" class="file-input" />
+        <input
+          type="file"
+          name="file-input"
+          id="file-input"
+          class="file-input"
+          @change="handlePosterInput"
+        />
       </div>
       <div class="dialog-footer">
         <mv-button
@@ -65,14 +71,14 @@ watch(
   () => show.value,
   () => {
     if (show.value && props.movie) {
-      console.log('showing dialog')
       movieState.value = {
         id: props.movie ? props.movie.id : undefined,
         title: props.movie ? props.movie.title : undefined,
         summary: props.movie ? props.movie.summary : undefined,
         director: props.movie ? props.movie.director : undefined,
         releaseYear: props.movie ? props.movie.releaseYear : undefined,
-        poster: props.movie ? props.movie.poster : undefined
+        poster: props.movie ? props.movie.poster : undefined,
+        fileName: props.movie ? props.movie.fileName : undefined
       }
     }
   }
@@ -92,6 +98,17 @@ const movieState = ref({
   releaseYear: undefined,
   poster: undefined
 } as Movie)
+
+const handlePosterInput = (event: any) => {
+  let file = event.target.files[0]
+  movieState.value.fileName = file.name
+  const reader = new FileReader()
+  reader.readAsDataURL(file)
+  reader.onload = () => {
+    console.log(file)
+    movieState.value.poster = reader.result as string
+  }
+}
 
 const saveHandler = () => {
   MovieService.update(movieState.value)

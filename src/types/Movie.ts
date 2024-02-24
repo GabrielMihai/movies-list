@@ -5,4 +5,5 @@ export type Movie = {
   director?: string
   releaseYear?: number
   poster?: string
+  fileName?: string
 }
