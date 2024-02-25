@@ -6,7 +6,7 @@
         <mv-icon icon="close" @click="closeDialog" />
       </div>
       <div class="error-dialog-body">
-        {{ errorMessage }}
+        <span v-hmtl="errorMessage" />
       </div>
     </div>
   </div>
@@ -25,7 +25,7 @@ const emits = defineEmits(['error:close'])
 
 const errorMessage = computed(() =>
   props.errorName === 'QuotaExceededError'
-    ? 'Browser memory is full.\nTry using a lower quality image.'
+    ? 'Browser memory is full.<br>Try using a lower quality image.'
     : 'Generic error.'
 )
 
