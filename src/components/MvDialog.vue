@@ -1,21 +1,42 @@
 <template>
   <div :class="show ? 'dialog' : 'd-none'">
     <div class="dialog-container">
-      <div class="dialog-header"><mv-button icon="close" @click="closeDialog" /></div>
+      <div class="dialog-header">
+        <span>{{ props.movie ? 'Edit movie' : 'New movie' }}</span>
+        <mv-button icon="close" @click="closeDialog" />
+      </div>
       <div class="dialog-body">
-        <input v-model="movieState.title" type="text" class="text-input" placeholder="Title" />
+        <input
+          v-model="movieState.title"
+          type="text"
+          class="text-input"
+          placeholder="Title"
+          required
+          maxlength="50"
+        />
         <textarea
           v-model="movieState.summary"
           type="text"
           class="text-input textarea"
           placeholder="Summary"
+          required
+          maxlength="500"
         />
-        <input v-model="movieState.director" class="text-input" placeholder="Director" />
+        <input
+          v-model="movieState.director"
+          class="text-input"
+          placeholder="Director"
+          required
+          maxlength="20"
+        />
         <input
           v-model.number="movieState.releaseYear"
           type="number"
           class="text-input"
           placeholder="Release year"
+          min="1900"
+          :max="currentYear"
+          required
         />
         <label for="file-input" class="file-input-label">
           {{
@@ -53,6 +74,8 @@ import type { Movie } from '@/types/Movie'
 import { ref, watch } from 'vue'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
+
+const currentYear = new Date().getFullYear() + 10
 
 const show = defineModel({ default: false })
 watch(

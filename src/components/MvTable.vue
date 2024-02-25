@@ -23,12 +23,8 @@
             <td>{{ movie.releaseYear }}</td>
             <td>
               <div class="movie-table-actions">
-                <mv-icon icon="pencil" class="table-action-icon" @click="editMovieHandler(movie)" />
-                <mv-icon
-                  icon="delete"
-                  class="table-action-icon"
-                  @click="deleteMovieHandler(movie)"
-                />
+                <mv-button icon="pencil" @click="editMovieHandler(movie)" />
+                <mv-button icon="delete" @click="deleteMovieHandler(movie)" />
               </div>
             </td>
           </tr>
@@ -48,7 +44,6 @@
 import MovieService from '@/service/MovieService'
 import type { Movie } from '@/types/Movie'
 import MvButton from './MvButton.vue'
-import MvIcon from './MvIcon.vue'
 
 const props = defineProps<{
   movies: Movie[]

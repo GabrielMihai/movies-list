@@ -1,11 +1,12 @@
 .button {
-  background-color: transparent;
+  background-color: $color-primary-alt;
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
+  color: $color-tertiary;
   &:hover {
-    background-color: $color-primary;
+    background-color: $color-primary-lighten;
   }
 
   .button-with-text-icon {
@@ -26,4 +27,14 @@
   width: 2.2rem;
   height: 2.2rem;
   font-size: x-large;
+  color: $color-primary-alt;
+  background-color: transparent;
+
+  &:hover {
+    background-color: $color-primary;
+  }
+
+  @media screen and (max-width: $small-breakpoint-max-width) {
+    color: $color-primary-alt;
+  }
 }

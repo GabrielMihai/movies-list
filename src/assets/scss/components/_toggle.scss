@@ -1,6 +1,6 @@
 .switch {
   display: inline-block;
-  width: 70px;
+  width: 65px;
   height: 34px;
   position: relative;
 }
@@ -14,7 +14,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: $color-secondary;
+  background-color: $color-primary-lighten;
   border-radius: 40px;
   cursor: pointer;
 }
@@ -27,7 +27,7 @@
   left: 4px;
   bottom: 4px;
   border-radius: 50%;
-  background-color: $color-tertiary;
+  background-color: $color-primary-alt;
   transition: 0.4s all ease;
 }
 
@@ -38,5 +38,5 @@
 }
 
 .checkbox:checked + .toggle-thumb:before {
-  transform: translateX(36px);
+  transform: translateX(31px);
 }
