@@ -3,7 +3,7 @@
   <div class="movie-container">
     <div class="movie-container-header">
       <div style="display: flex; align-items: center; gap: 0.3rem">
-        <h1>Movie list</h1>
+        <span style="font-size: 2rem">Movie list</span>
         <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
       </div>
       <label class="switch" v-if="screenWidth >= 1024">
