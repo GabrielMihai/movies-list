@@ -62,9 +62,14 @@
             required
           />
           <div class="error-message-container" v-if="!validationState.releaseYear">
-            <span>
-              Mandatory field. Value must be a valid year between 1990 and {{ currentYear }}</span
+            <span
+              v-html="
+                !movieState.releaseYear
+                  ? 'Mandatory field'
+                  : 'Invalid year<br>Must be between 1900 and ' + currentYear
+              "
             >
+            </span>
             <i class="mdi mdi-exclamation-thick" style="font-size: 1.3rem"></i>
           </div>
         </div>
