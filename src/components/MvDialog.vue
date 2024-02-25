@@ -106,21 +106,12 @@ const saveHandler = () => {
 }
 
 const createHandler = () => {
-  alert(
-    movieState.value.id +
-      ' ' +
-      movieState.value.fileName +
-      ' ' +
-      movieState.value.poster +
-      ' ' +
-      movieState.value.director +
-      ' ' +
-      movieState.value.summary +
-      ' ' +
-      movieState.value.title
-  )
-  MovieService.create(movieState.value)
-  closeDialog()
+  try {
+    MovieService.create(movieState.value)
+    closeDialog()
+  } catch (e: any) {
+    alert(e.name + ' ' + e.message + ' ' + e.stack)
+  }
 }
 
 const closeDialog = () => {
