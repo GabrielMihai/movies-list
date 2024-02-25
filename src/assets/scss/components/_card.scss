@@ -118,6 +118,11 @@
     font-size: 0.7rem;
     color: $color-tertiary;
     animation: flickerAnimation 5s infinite;
+
+    @media screen and (min-width: $medium-breakpoint-min-width) and (max-width: $medium-breakpoint-max-width),
+      screen and (min-width: $large-breakpoint-min-width) {
+      display: none;
+    }
   }
 }
 
