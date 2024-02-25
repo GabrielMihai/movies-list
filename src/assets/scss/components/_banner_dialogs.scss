@@ -51,6 +51,7 @@
     button {
       background-color: $color-warning;
       color: black;
+      box-shadow: $box-shadow;
 
       &:hover {
         background-color: $color-warning-lighten;

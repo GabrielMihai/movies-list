@@ -50,7 +50,7 @@ const computedMovies = computed(() => {
   for (const [key, value] of Object.entries(props.movie)) {
     if (key !== 'fileName' && key !== 'poster' && key !== 'id') {
       movieDetails.push({
-        key: key === 'releaseYear' ? 'RELEASE YEAR' : key.toUpperCase(),
+        key: key === 'releaseYear' ? 'Release year' : key.charAt(0).toUpperCase() + key.slice(1),
         value: value.toString()
       })
     }

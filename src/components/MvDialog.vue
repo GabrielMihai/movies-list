@@ -6,38 +6,68 @@
         <mv-button icon="close" @click="closeDialog" />
       </div>
       <div class="dialog-body">
-        <input
-          v-model="movieState.title"
-          type="text"
-          class="text-input"
-          placeholder="Title"
-          required
-          maxlength="50"
-        />
-        <textarea
-          v-model="movieState.summary"
-          type="text"
-          class="text-input textarea"
-          placeholder="Summary"
-          required
-          maxlength="500"
-        />
-        <input
-          v-model="movieState.director"
-          class="text-input"
-          placeholder="Director"
-          required
-          maxlength="20"
-        />
-        <input
-          v-model.number="movieState.releaseYear"
-          type="number"
-          class="text-input"
-          placeholder="Release year"
-          min="1900"
-          :max="currentYear"
-          required
-        />
+        <div class="input-container">
+          <input
+            v-model="movieState.title"
+            type="text"
+            class="text-input"
+            :class="{ 'error-input': !validationState.title }"
+            placeholder="Title"
+            required
+            maxlength="50"
+          />
+          <div class="error-message-container" v-if="!validationState.title">
+            <span> Mandatory field </span>
+            <i class="mdi mdi-exclamation-thick" style="font-size: 1.3rem"></i>
+          </div>
+        </div>
+        <div class="input-container">
+          <textarea
+            v-model="movieState.summary"
+            type="text"
+            :class="{ 'error-input': !validationState.summary }"
+            class="text-input textarea"
+            placeholder="Summary"
+            required
+            maxlength="500"
+          />
+          <div class="error-message-container-no-transform" v-if="!validationState.summary">
+            <span> Mandatory field </span>
+            <i class="mdi mdi-exclamation-thick" style="font-size: 1.3rem"></i>
+          </div>
+        </div>
+        <div class="input-container">
+          <input
+            v-model="movieState.director"
+            class="text-input"
+            :class="{ 'error-input': !validationState.director }"
+            placeholder="Director"
+            required
+            maxlength="20"
+          />
+          <div class="error-message-container" v-if="!validationState.director">
+            <span> Mandatory field </span>
+            <i class="mdi mdi-exclamation-thick" style="font-size: 1.3rem"></i>
+          </div>
+        </div>
+        <div class="input-container">
+          <input
+            v-model.number="movieState.releaseYear"
+            type="number"
+            class="text-input"
+            :class="{ 'error-input': !validationState.releaseYear }"
+            placeholder="Release year"
+            min="1900"
+            :max="currentYear"
+            required
+          />
+          <div class="error-message-container" v-if="!validationState.releaseYear">
+            <span>
+              Mandatory field. Value must be a valid year between 1990 and {{ currentYear }}</span
+            >
+            <i class="mdi mdi-exclamation-thick" style="font-size: 1.3rem"></i>
+          </div>
+        </div>
         <label for="file-input" class="file-input-label">
           {{
             movieState.fileName
@@ -57,10 +87,7 @@
         />
       </div>
       <div class="dialog-footer">
-        <mv-button
-          :icon="props.movie ? 'floppy' : 'plus'"
-          @click="props.movie ? saveHandler() : createHandler()"
-        >
+        <mv-button :icon="props.movie ? 'floppy' : 'plus'" @click="validateForm">
           {{ props.movie ? 'SAVE' : 'CREATE' }}
         </mv-button>
       </div>
@@ -71,7 +98,7 @@
 <script setup lang="ts">
 import MovieService from '@/service/MovieService'
 import type { Movie } from '@/types/Movie'
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import MvButton from './MvButton.vue'
 import MvIcon from './MvIcon.vue'
 
@@ -112,6 +139,35 @@ const movieState = ref({
   poster: undefined
 } as Movie)
 
+const buttonHasBeenClickedOnce = ref(false)
+
+const validationState = computed(() => {
+  return {
+    title: buttonHasBeenClickedOnce.value
+      ? movieState.value?.title && movieState.value.title.length > 0
+        ? true
+        : false
+      : true,
+    summary: buttonHasBeenClickedOnce.value
+      ? movieState.value?.summary && movieState.value.summary.length > 0
+        ? true
+        : false
+      : true,
+    director: buttonHasBeenClickedOnce.value
+      ? movieState.value?.director && movieState.value.director.length > 0
+        ? true
+        : false
+      : true,
+    releaseYear: buttonHasBeenClickedOnce.value
+      ? movieState.value?.releaseYear &&
+        movieState.value.releaseYear >= 1900 &&
+        movieState.value.releaseYear <= currentYear
+        ? true
+        : false
+      : true
+  }
+})
+
 const handlePosterInput = (event: any) => {
   let file = event.target.files[0]
   movieState.value.fileName = file.name
@@ -140,9 +196,26 @@ const createHandler = () => {
   }
 }
 
+const validateForm = () => {
+  buttonHasBeenClickedOnce.value = true
+  if (
+    validationState.value.title &&
+    validationState.value.summary &&
+    validationState.value.director &&
+    validationState.value.releaseYear
+  ) {
+    if (props.movie) {
+      saveHandler()
+    } else {
+      createHandler()
+    }
+  }
+}
+
 const closeDialog = () => {
   show.value = false
   showSpan.value = false
+  buttonHasBeenClickedOnce.value = false
 
   movieState.value = {
     id: undefined,

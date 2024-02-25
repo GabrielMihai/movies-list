@@ -7,8 +7,8 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: $border-radius;
-  border: 1px solid $color-secondary;
   background-color: $color-tertiary;
+  box-shadow: $box-shadow;
 
   .movie-table-data {
     flex: 1;
@@ -64,5 +64,9 @@
     display: flex;
     justify-content: end;
     padding: 0.5rem 1rem;
+
+    button {
+      box-shadow: $box-shadow;
+    }
   }
 }
