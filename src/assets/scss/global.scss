@@ -75,12 +75,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    overflow: auto;
     position: relative;
-
-    @media screen and (max-width: 767px) {
-      overflow-y: auto;
-      overflow-x: hidden;
-    }
   }
 }
