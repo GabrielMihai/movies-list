@@ -100,8 +100,12 @@ const handlePosterInput = (event: any) => {
 }
 
 const saveHandler = () => {
-  MovieService.update(movieState.value)
-  closeDialog()
+  try {
+    MovieService.update(movieState.value)
+    closeDialog()
+  } catch (e: any) {
+    emits('create:error', e.name)
+  }
 }
 
 const createHandler = () => {
