@@ -6,7 +6,7 @@
         <mv-icon icon="close" @click="closeDialog" />
       </div>
       <div class="error-dialog-body">
-        <span v-hmtl="errorMessage" />
+        <span v-html="errorMessage" />
       </div>
     </div>
   </div>
