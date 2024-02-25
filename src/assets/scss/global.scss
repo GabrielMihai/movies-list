@@ -57,7 +57,7 @@ body {
   flex-direction: column;
 
   .movie-container-header {
-    flex: 0;
+    height: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,8 +70,7 @@ body {
   }
 
   .movie-container-body {
-    flex: 1;
-    box-sizing: border-box;
+    height: 95%;
     overflow: hidden;
     position: relative;
 
