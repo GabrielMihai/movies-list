@@ -4,6 +4,9 @@
   background-color: yellow;
   box-sizing: border-box;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
   padding: 2rem;
 
@@ -13,7 +16,7 @@
 
   .movie-card {
     width: 70%;
-    height: 40%;
+    flex: 0 0 40%;
     overflow: hidden;
     border-radius: $border-radius;
     display: flex;
@@ -21,13 +24,9 @@
     box-shadow: $box-shadow;
     position: relative;
 
-    &:not(:last-child) {
-      margin-bottom: 1rem;
-    }
-
     @media screen and (max-width: 767px) {
       display: block;
-      height: 80%;
+      flex: 0 0 80%;
       width: 100%;
     }
 
