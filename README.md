@@ -29,4 +29,11 @@ npm run build
 npm run lint
 ```
 
+### Test with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test
+```
+
+Clapper icon used for title icon and favicon
 [Clapper Board](https://icons8.com/icon/FoDhNGl8I5hv/clapper-board) icon by [Icons8](https://icons8.com)
