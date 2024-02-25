@@ -22,6 +22,9 @@
       <mv-button icon="pencil" @click="editHandler" />
       <mv-button icon="delete" @click="deleteHandler" />
     </div>
+    <div class="movie-card-mobile-tap-info">
+      <span>Tap for details</span>
+    </div>
   </div>
 </template>
 
