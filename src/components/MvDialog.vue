@@ -18,7 +18,13 @@
           placeholder="Release year"
         />
         <label for="file-input" class="file-input-label">
-          {{ movieState.fileName ?? 'Select a file...' }}
+          {{
+            movieState.fileName
+              ? movieState.fileName.length > 20
+                ? movieState.fileName.slice(0, 20)
+                : movieState.fileName
+              : 'Select a file...'
+          }}
           <mv-icon icon="file-outline" class="file-icon" />
         </label>
         <input
