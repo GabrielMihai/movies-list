@@ -106,7 +106,19 @@ const saveHandler = () => {
 }
 
 const createHandler = () => {
-  alert(movieState.value)
+  alert(
+    movieState.value.id +
+      ' ' +
+      movieState.value.fileName +
+      ' ' +
+      movieState.value.poster +
+      ' ' +
+      movieState.value.director +
+      ' ' +
+      movieState.value.summary +
+      ' ' +
+      movieState.value.title
+  )
   MovieService.create(movieState.value)
   closeDialog()
 }
