@@ -95,7 +95,7 @@ const handlePosterInput = (event: any) => {
   const reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = () => {
-    console.log(file)
+    alert((file.name + ' ' + reader.result) as string)
     movieState.value.poster = reader.result as string
   }
 }
@@ -120,6 +120,7 @@ const closeDialog = () => {
     summary: undefined,
     director: undefined,
     releaseYear: undefined,
+    fileName: undefined,
     poster: undefined
   }
   emits('dialog:close')
