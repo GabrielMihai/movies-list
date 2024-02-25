@@ -109,15 +109,17 @@
 
   .movie-card-mobile-tap-info {
     position: absolute;
-    top: 1rem;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%);
-    background-color: $color-primary-lighten;
+    transform: scale(1) translateX(-50%);
+    background-color: $color-primary-alt;
     padding: 0.5rem;
-    border-radius: 2rem;
+    border-bottom-left-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
     font-size: 0.7rem;
     color: $color-tertiary;
-    animation: flickerAnimation 5s infinite;
+    animation: pulse 2s infinite;
+    opacity: 0.7;
 
     @media screen and (min-width: $medium-breakpoint-min-width) and (max-width: $medium-breakpoint-max-width),
       screen and (min-width: $large-breakpoint-min-width) {
