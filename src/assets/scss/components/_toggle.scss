@@ -22,6 +22,19 @@
   background-color: $color-primary-lighten;
   border-radius: 40px;
   cursor: pointer;
+
+  i {
+    &:first-child {
+      margin-left: 0.4rem;
+      font-size: 1.3rem;
+      color: white;
+    }
+    &:last-child {
+      margin-right: 0.4rem;
+      font-size: 1.3rem;
+      color: white;
+    }
+  }
 }
 
 .toggle-thumb:before {

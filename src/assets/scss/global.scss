@@ -68,6 +68,20 @@ body {
     @media screen and (max-width: 767px) {
       padding: 0.3rem 1rem;
     }
+
+    .movie-container-header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+
+      span {
+        font-size: 2rem;
+      }
+
+      img {
+        height: 30px;
+      }
+    }
   }
 
   .movie-container-body {

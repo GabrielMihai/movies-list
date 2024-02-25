@@ -1,19 +1,15 @@
 <template>
-  <!-- TODO rimuovere tutti gli stili inline -->
   <div class="movie-container">
     <div class="movie-container-header">
-      <div style="display: flex; align-items: center; gap: 0.3rem">
-        <span style="font-size: 2rem">Movie list</span>
-        <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
+      <div class="movie-container-header-title">
+        <span>Movie list</span>
+        <img src="@/assets/images/movie.png" alt="Movie icon" />
       </div>
       <label class="switch">
         <input type="checkbox" class="checkbox" v-model="checked" />
         <span class="toggle-thumb">
-          <i class="mdi mdi-table" style="margin-left: 0.4rem; font-size: 1.3rem; color: white" />
-          <i
-            class="mdi mdi-cards-variant"
-            style="margin-right: 0.4rem; font-size: 1.3rem; color: white"
-          />
+          <i class="mdi mdi-table" />
+          <i class="mdi mdi-cards-variant" />
         </span>
       </label>
 
