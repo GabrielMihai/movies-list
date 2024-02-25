@@ -25,7 +25,7 @@ const emits = defineEmits(['error:close'])
 
 const errorMessage = computed(() =>
   props.errorName === 'QuotaExceededError'
-    ? 'Browser memory is full. Try using a lower quality image.'
+    ? 'Browser memory is full.\nTry using a lower quality image.'
     : 'Generic error.'
 )
 
