@@ -3,7 +3,7 @@
     <div class="error-dialog-container">
       <div class="error-dialog-header">
         <span>{{ props.errorName }}</span>
-        <mv-icon icon="close" @click="emits('error:close')" />
+        <mv-icon icon="close" @click="closeDialog" />
       </div>
       <div class="error-dialog-body">
         {{ errorMessage }}
@@ -28,6 +28,11 @@ const errorMessage = computed(() =>
     ? 'Browser memory is full. Try using a lower quality image.'
     : 'Generic error.'
 )
+
+const closeDialog = () => {
+  show.value = false
+  emits('error:close')
+}
 </script>
 
 <style scoped></style>
