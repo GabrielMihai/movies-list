@@ -1,0 +1,60 @@
+.banner-dialog-container {
+  width: 40%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: $border-radius;
+  background-color: $color-tertiary;
+
+  @media screen and (max-width: $small-breakpoint-max-width) {
+    width: 80%;
+    height: 20%;
+  }
+
+  .banner-dialog-header {
+    flex: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 1rem;
+    font-size: large;
+
+    @media screen and (min-width: $large-breakpoint-min-width) {
+      font-size: 1.5rem;
+    }
+  }
+
+  .error-dialog-header {
+    background-color: $color-error;
+    color: $color-tertiary;
+  }
+
+  .warning-dialog-header {
+    background-color: $color-warning;
+    color: black;
+  }
+
+  .banner-dialog-body {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .warning-dialog-footer {
+    flex: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 1rem;
+    justify-content: end;
+
+    button {
+      background-color: $color-warning;
+      color: black;
+
+      &:hover {
+        background-color: $color-warning-lighten;
+      }
+    }
+  }
+}

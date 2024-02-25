@@ -8,6 +8,7 @@ $color-tertiary: whitesmoke;
 $color-backdrop: rgba(0, 0, 0, 0.75);
 $color-error: rgb(128, 0, 0);
 $color-warning: rgb(255, 193, 7);
+$color-warning-lighten: rgb(255, 215, 96);
 
 $border-radius: 0.3rem;
 $box-shadow:
@@ -16,4 +17,6 @@ $box-shadow:
 
 // DEVICE BREAKPOINTS
 $small-breakpoint-max-width: 767px;
+$medium-breakpoint-min-width: 768px;
+$medium-breakpoint-max-width: 1023px;
 $large-breakpoint-min-width: 1024px;

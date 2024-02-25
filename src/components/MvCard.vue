@@ -1,7 +1,8 @@
 <template>
   <div class="movie-card">
     <div class="movie-card-img" @click="tapped = !tapped">
-      <img :src="movie.poster" :alt="movie.fileName" />
+      <img v-if="props.movie.poster" :src="props.movie.poster" :alt="props.movie.fileName" />
+      <img v-else src="@/assets/images/noImage.jpg" alt="No image found" />
     </div>
     <div
       :class="screenWidth < 768 ? (tapped ? 'movie-card-details' : 'd-none') : 'movie-card-details'"
@@ -25,10 +26,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
 import type { Movie } from '@/types/Movie'
+import { computed, ref } from 'vue'
 import MvButton from './MvButton.vue'
-import MovieService from '@/service/MovieService'
 
 interface MovieDetails {
   key: string
@@ -39,7 +39,7 @@ const props = defineProps<{
   movie: Movie
 }>()
 
-const emits = defineEmits(['refresh', 'movie:edit'])
+const emits = defineEmits(['movie:edit', 'movie:delete'])
 
 const screenWidth = computed(() => screen.width)
 const tapped = ref(false)
@@ -59,10 +59,7 @@ const computedMovies = computed(() => {
 })
 
 const deleteHandler = () => {
-  if (props.movie) {
-    MovieService.delete(props.movie.id!)
-    emits('refresh')
-  }
+  emits('movie:delete', props.movie)
 }
 
 const editHandler = () => {

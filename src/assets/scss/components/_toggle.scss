@@ -3,6 +3,11 @@
   width: 65px;
   height: 34px;
   position: relative;
+
+  @media screen and (min-width: $medium-breakpoint-min-width) and (max-width: $medium-breakpoint-max-width),
+    screen and (max-width: $small-breakpoint-max-width) {
+    display: none;
+  }
 }
 
 .toggle-thumb {

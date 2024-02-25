@@ -1,11 +1,11 @@
 <template>
   <div :class="show ? 'dialog' : 'd-none'">
-    <div class="error-dialog-container">
-      <div class="error-dialog-header">
+    <div class="banner-dialog-container">
+      <div class="banner-dialog-header error-dialog-header">
         <span>{{ props.errorName }}</span>
         <mv-icon icon="close" @click="closeDialog" />
       </div>
-      <div class="error-dialog-body">
+      <div class="banner-dialog-body">
         <span v-html="errorMessage" />
       </div>
     </div>

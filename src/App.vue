@@ -6,7 +6,7 @@
         <span style="font-size: 2rem">Movie list</span>
         <img src="@/assets/images/movie.png" style="height: 30px" alt="" />
       </div>
-      <label class="switch" v-if="screenWidth >= 1024">
+      <label class="switch">
         <input type="checkbox" class="checkbox" v-model="checked" />
         <span class="toggle-thumb">
           <i class="mdi mdi-table" style="margin-left: 0.4rem; font-size: 1.3rem; color: white" />
@@ -17,39 +17,51 @@
         </span>
       </label>
 
-      <mv-button icon="plus" v-if="screenWidth < 1024 && !checked" @click="openDialog" />
+      <mv-button
+        icon="plus"
+        v-if="!checked"
+        @click="openEditDialog"
+        class="movie-add-button-small-screen"
+      />
     </div>
     <div class="movie-container-body">
       <mv-table
         v-if="checked"
         :movies="movies"
-        @dialog:show="openDialog"
+        @dialog:show="openEditDialog"
+        @movie:delete="deleteMovieHandler"
         @movie:edit="editMovieHandler"
         @refresh="getAllMovies"
       />
-      <div v-else class="movie-card-container">
+      <div v-else-if="movies.length > 0" class="movie-card-container">
         <mv-card
           v-for="movie in movies"
           :key="movie.id"
           :movie="movie"
-          @refresh="getAllMovies"
           @movie:edit="editMovieHandler"
+          @movie:delete="deleteMovieHandler"
         />
       </div>
+      <span v-else> No movies found... </span>
       <mv-button
         icon="plus"
         v-if="screenWidth >= 1024 && !checked"
         class="movie-add-button-card-case"
-        @click="openDialog"
+        @click="openEditDialog"
       />
     </div>
     <mv-dialog
-      v-model="showDialog"
+      v-model="showEditDialog"
       :movie="selectedMovie"
       @create:error="openErrorDialog"
-      @dialog:close="closeDialogHandler"
+      @dialog:close="closeEditDialogHandler"
     />
     <mv-error-dialog v-model="showErrorDialog" :error-name="errorName" />
+    <mv-warning-dialog
+      v-model="showDeleteDialog"
+      :movie="selectedMovie!"
+      @close="closeDeleteDialogHandler"
+    />
   </div>
 </template>
 
@@ -62,6 +74,7 @@ import MvDialog from './components/MvDialog.vue'
 import MvCard from './components/MvCard.vue'
 import MvButton from './components/MvButton.vue'
 import MvErrorDialog from './components/MvErrorDialog.vue'
+import MvWarningDialog from './components/MvWarningDialog.vue'
 
 onMounted(() => {
   getAllMovies()
@@ -75,14 +88,14 @@ const getAllMovies = () => {
   movies.value = MovieService.getAll()
 }
 
-const showDialog = ref(false)
+const showEditDialog = ref(false)
 
-const openDialog = () => {
-  showDialog.value = true
+const openEditDialog = () => {
+  showEditDialog.value = true
 }
 
-const closeDialogHandler = () => {
-  showDialog.value = false
+const closeEditDialogHandler = () => {
+  showEditDialog.value = false
   selectedMovie.value = null
   getAllMovies()
 }
@@ -90,7 +103,23 @@ const closeDialogHandler = () => {
 const selectedMovie = ref(null as Movie | null)
 const editMovieHandler = (movie: Movie) => {
   selectedMovie.value = movie
-  openDialog()
+  openEditDialog()
+}
+
+const showDeleteDialog = ref(false)
+const openDeleteDialog = () => {
+  showDeleteDialog.value = true
+}
+
+const closeDeleteDialogHandler = () => {
+  showDeleteDialog.value = false
+  selectedMovie.value = null
+  getAllMovies()
+}
+
+const deleteMovieHandler = (movie: Movie) => {
+  selectedMovie.value = movie
+  openDeleteDialog()
 }
 
 const showErrorDialog = ref(false)

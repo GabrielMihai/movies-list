@@ -41,7 +41,6 @@
 </template>
 
 <script setup lang="ts">
-import MovieService from '@/service/MovieService'
 import type { Movie } from '@/types/Movie'
 import MvButton from './MvButton.vue'
 
@@ -49,7 +48,7 @@ const props = defineProps<{
   movies: Movie[]
 }>()
 
-const emits = defineEmits(['dialog:show', 'movie:edit', 'refresh'])
+const emits = defineEmits(['dialog:show', 'movie:edit', 'movie:delete'])
 
 const headers = ['Title', 'Summary', 'Director', 'Release year', 'Actions']
 
@@ -62,8 +61,7 @@ const editMovieHandler = (movie: Movie) => {
 }
 
 const deleteMovieHandler = (movie: Movie) => {
-  MovieService.delete(movie.id!)
-  emits('refresh')
+  emits('movie:delete', movie)
 }
 </script>
 
