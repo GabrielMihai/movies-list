@@ -110,7 +110,7 @@ const createHandler = () => {
     MovieService.create(movieState.value)
     closeDialog()
   } catch (e: any) {
-    alert(e.name + ' ' + e.message + ' ' + e.stack)
+    alert(e.name)
   }
 }
 
