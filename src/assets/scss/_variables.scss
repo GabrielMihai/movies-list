@@ -4,8 +4,13 @@ $color-primary: lightgrey;
 $color-secondary: grey;
 $color-tertiary: whitesmoke;
 $color-backdrop: rgba(0, 0, 0, 0.75);
+$color-error: #800000;
 
 $border-radius: 0.3rem;
 $box-shadow:
   0 4px 8px 0 rgba(0, 0, 0, 0.2),
   0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+// DEVICE BREAKPOINTS
+$small-breakpoint-max-width: 767px;
+$large-breakpoint-min-width: 1024px;

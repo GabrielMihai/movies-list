@@ -1,0 +1,24 @@
+.error-dialog-container {
+  width: 20%;
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: $small-breakpoint-max-width) {
+    width: 90%;
+    height: 50%;
+  }
+
+  .error-dialog-header {
+    flex: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    background-color: $color-error;
+  }
+
+  .error-dialog-body {
+    flex: 1;
+    padding: 1rem;
+  }
+}

@@ -78,7 +78,7 @@ const props = defineProps<{
 
 const showSpan = ref(false)
 
-const emits = defineEmits(['dialog:close'])
+const emits = defineEmits(['dialog:close', 'create:error'])
 
 const movieState = ref({
   id: undefined,
@@ -110,7 +110,7 @@ const createHandler = () => {
     MovieService.create(movieState.value)
     closeDialog()
   } catch (e: any) {
-    alert(e.name)
+    emits('create:error', e.name)
   }
 }
 

@@ -43,7 +43,13 @@
         @click="openDialog"
       />
     </div>
-    <mv-dialog v-model="showDialog" @dialog:close="closeDialogHandler" :movie="selectedMovie" />
+    <mv-dialog
+      v-model="showDialog"
+      :movie="selectedMovie"
+      @create:error="openErrorDialog"
+      @dialog:close="closeDialogHandler"
+    />
+    <mv-error-dialog v-model="showErrorDialog" :error-name="errorName" />
   </div>
 </template>
 
@@ -55,6 +61,7 @@ import MvTable from '@/components/MvTable.vue'
 import MvDialog from './components/MvDialog.vue'
 import MvCard from './components/MvCard.vue'
 import MvButton from './components/MvButton.vue'
+import MvErrorDialog from './components/MvErrorDialog.vue'
 
 onMounted(() => {
   getAllMovies()
@@ -84,6 +91,13 @@ const selectedMovie = ref(null as Movie | null)
 const editMovieHandler = (movie: Movie) => {
   selectedMovie.value = movie
   openDialog()
+}
+
+const showErrorDialog = ref(false)
+const errorName = ref('')
+const openErrorDialog = (error: string) => {
+  errorName.value = error
+  showErrorDialog.value = true
 }
 </script>
 
