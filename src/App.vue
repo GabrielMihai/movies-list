@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO rimuovere tutti gli stili inline -->
   <div class="movie-container">
     <div class="movie-container-header">
       <div style="display: flex; align-items: center; gap: 0.3rem">
@@ -8,11 +9,11 @@
       <label class="switch" v-if="screenWidth >= 1024">
         <input type="checkbox" class="checkbox" v-model="checked" />
         <span class="toggle-thumb">
-          <i class="mdi mdi-table" style="margin-left: 0.5rem; font-size: 1.3rem; color: white"></i>
+          <i class="mdi mdi-table" style="margin-left: 0.5rem; font-size: 1.3rem; color: white" />
           <i
             class="mdi mdi-cards-variant"
             style="margin-right: 0.5rem; font-size: 1.3rem; color: white"
-          ></i>
+          />
         </span>
       </label>
 
