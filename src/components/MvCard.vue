@@ -23,7 +23,7 @@
       <mv-button icon="delete" @click="deleteHandler" />
     </div>
     <div class="movie-card-mobile-tap-info">
-      <span>Tap for details</span>
+      <span>Tap image for details</span>
     </div>
   </div>
 </template>
