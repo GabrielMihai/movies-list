@@ -63,6 +63,7 @@
           />
           <div class="error-message-container" v-if="!validationState.releaseYear">
             <span
+              :class="{ 'font-small': movieState.releaseYear }"
               v-html="
                 !movieState.releaseYear
                   ? 'Mandatory field'
