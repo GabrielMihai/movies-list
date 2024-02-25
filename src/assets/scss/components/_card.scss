@@ -64,7 +64,7 @@
         bottom: 0;
         right: 0;
         background-color: $color-backdrop;
-        color: $color-primary;
+        color: $color-secondary;
       }
 
       .movie-card-detail {
@@ -81,6 +81,7 @@
           flex: 0;
           font-size: x-large;
           min-width: 200px;
+          color: $color-secondary;
         }
 
         .movie-card-detail-value {
@@ -89,7 +90,7 @@
           word-wrap: break-word;
           color: $color-backdrop;
           @media screen and (max-width: 767px) {
-            color: $color-secondary;
+            color: $color-accent;
           }
         }
       }
