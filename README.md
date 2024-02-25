@@ -1,7 +1,9 @@
 # movies-list
 
 A webapp that lets tou view, add, edit and delete films that are saved in the browser's localStorage.
-YOu can view this webapp deployed on [Netlify](https://mv-movies-list.netlify.app/)
+You can view this webapp deployed on [Netlify](https://mv-movies-list.netlify.app/).
+
+You can check on the Github actions how I configured Vitest to run some simple CRUD tests.
 
 ## Project Setup
 
