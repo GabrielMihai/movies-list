@@ -106,6 +106,7 @@ const saveHandler = () => {
 }
 
 const createHandler = () => {
+  alert(movieState.value)
   MovieService.create(movieState.value)
   closeDialog()
 }
