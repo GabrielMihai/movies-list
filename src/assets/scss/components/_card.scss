@@ -116,8 +116,9 @@
       @media screen and (max-width: 767px) {
         right: 0.5rem;
 
-        i {
+        button {
           font-size: 1.7rem;
+          -webkit-tap-highlight-color: transparent;
         }
       }
     }
