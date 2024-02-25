@@ -95,7 +95,6 @@ const handlePosterInput = (event: any) => {
   const reader = new FileReader()
   reader.readAsDataURL(file)
   reader.onload = () => {
-    alert((file.name + ' ' + reader.result) as string)
     movieState.value.poster = reader.result as string
   }
 }

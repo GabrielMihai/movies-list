@@ -17,7 +17,6 @@ export default {
     const movies = this.getAll()
     movies.push(movie)
     setMovies(movies)
-    alert(this.getAll())
   },
   update(movie: Movie): void {
     const movies = this.getAll()
