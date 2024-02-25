@@ -47,6 +47,10 @@
 
       button {
         box-shadow: $box-shadow;
+
+        @media screen and (max-width: 767px) {
+          -webkit-tap-highlight-color: transparent;
+        }
       }
     }
 
