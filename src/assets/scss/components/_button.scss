@@ -1,5 +1,5 @@
 .button {
-  background-color: $color-primary-alt;
+  background-color: $color-primary;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,14 +27,14 @@
   width: 2.2rem;
   height: 2.2rem;
   font-size: x-large;
-  color: $color-primary-alt;
+  color: $color-primary;
   background-color: transparent;
 
   &:hover {
-    background-color: $color-primary;
+    background-color: $color-accent;
   }
 
   @media screen and (max-width: $small-breakpoint-max-width) {
-    color: $color-primary-alt;
+    color: $color-primary;
   }
 }

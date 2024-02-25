@@ -30,7 +30,8 @@
     }
 
     .movie-card-img {
-      @media screen and (min-width: 1024px) {
+      @media screen and (min-width: $medium-breakpoint-min-width) and (max-width: $medium-breakpoint-max-width),
+        screen and (min-width: 1024px) {
         width: 30%;
       }
 
@@ -85,6 +86,7 @@
         .movie-card-detail-value {
           flex: 1;
           font-size: large;
+          word-wrap: break-word;
           color: $color-backdrop;
           @media screen and (max-width: 767px) {
             color: $color-secondary;
@@ -95,14 +97,28 @@
 
     .movie-card-actions {
       display: flex;
-      font-size: xx-large;
       position: absolute;
       right: 2rem;
       bottom: 0.5rem;
       color: white;
 
+      @media screen and (min-width: $medium-breakpoint-min-width) and (max-width: $medium-breakpoint-max-width),
+        screen and (min-width: 1024px) {
+        top: 0.5rem;
+        right: 0.5rem;
+        gap: 0.1rem;
+
+        i {
+          font-size: 1.5rem;
+        }
+      }
+
       @media screen and (max-width: 767px) {
         right: 0.5rem;
+
+        i {
+          font-size: 1.7rem;
+        }
       }
     }
   }
@@ -112,7 +128,7 @@
     top: 0;
     left: 50%;
     transform: scale(1) translateX(-50%);
-    background-color: $color-primary-alt;
+    background-color: $color-primary;
     padding: 0.5rem;
     border-bottom-left-radius: $border-radius;
     border-bottom-right-radius: $border-radius;
@@ -135,7 +151,7 @@
   width: 4rem;
   height: 4rem;
   font-size: xx-large;
-  background-color: $color-primary-alt;
+  background-color: $color-primary;
   color: $color-tertiary;
   box-shadow: $box-shadow;
 

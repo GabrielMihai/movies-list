@@ -1,5 +1,6 @@
 @import 'variables';
 @import 'utilities';
+@import 'animations';
 @import 'components/button';
 @import 'components/table';
 @import 'components/dialog';
@@ -29,44 +30,32 @@ body {
   overflow: hidden;
 }
 
-@keyframes fadeInAnimation {
-  0% {
-    opacity: 0;
-  }
+// @keyframes fadeInAnimation {
+//   0% {
+//     opacity: 0;
+//   }
 
-  100% {
-    opacity: 1;
-  }
-}
+//   100% {
+//     opacity: 1;
+//   }
+// }
 
-@keyframes flickerAnimation {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+// @keyframes pulse {
+//   0% {
+//     transform: scale(0.95) translateX(-50%);
+//     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
+//   }
 
-@keyframes pulse {
-  0% {
-    transform: scale(0.95) translateX(-50%);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
-  }
+//   70% {
+//     transform: scale(1) translateX(-48%);
+//     box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+//   }
 
-  70% {
-    transform: scale(1) translateX(-48%);
-    box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-  }
-
-  100% {
-    transform: scale(0.95) translateX(-50%);
-    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-}
+//   100% {
+//     transform: scale(0.95) translateX(-50%);
+//     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+//   }
+// }
 
 .movie-container {
   box-sizing: border-box;

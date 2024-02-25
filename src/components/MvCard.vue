@@ -22,7 +22,7 @@
       <mv-button icon="pencil" @click="editHandler" />
       <mv-button icon="delete" @click="deleteHandler" />
     </div>
-    <div class="movie-card-mobile-tap-info">
+    <div class="movie-card-mobile-tap-info" :class="{ 'd-none': tapped }">
       <span>Tap image for details</span>
     </div>
   </div>
